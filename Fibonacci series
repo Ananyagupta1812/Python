@@ -1,0 +1,10 @@
+#fibonacci series with recursion
+def fibonacci(num):
+    if(num==0 or num==1):
+        return num
+    else:
+        return fibonacci(num-1)+fibonacci(n  um-2)
+#driver's code
+num=int(input("Enter the limit"))
+for i in range(num):
+    print(fibonacci(i))
