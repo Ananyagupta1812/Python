@@ -1,5 +1,4 @@
-# 1.Simple square or rectangle pattern printing 
-
+# 1.Simple square or rectangle pattern printing using *
 rows= int(input('Enter the number of rows you want to print: '))
 cols= int(input('Enter the number of columns you want to print: '))
 
@@ -7,5 +6,19 @@ for i in range (rows):
     for j in range(cols):
         print("*", end=" ")
         j+=1
+    print("\n")
+    i=i+1
+
+
+# 2.Simple square or rectangle pattern printing using numbers 
+rows= int(input('Enter the number of rows you want to print: '))
+cols= int(input('Enter the number of columns you want to print: '))
+
+for i in range (rows):
+    for j in range(cols):
+        print(i+1, end=" ")
+        j+=1
+        
+    print('\n')
     i=i+1
 
