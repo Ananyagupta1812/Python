@@ -1,0 +1,33 @@
+from collections import deque
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start, end=" ")
+    for next in graph.get(start, []):
+        if next not in visited:
+            dfs(graph, next, visited)
+def main():
+    print("Enter the number of vertices: ")
+    vertices = int(input())
+    graph = {i: [] for i in range(vertices)}
+    print("Enter the number of edges: ")
+    edges = int(input())
+    print("Enter the edges (u, v) where u and v are 0-indexed: ")
+    for _ in range(edges):
+        u, v = map(int, input().split())
+        if u in graph and v in graph:
+            graph[u].append(v)
+            graph[v].append(u)  
+        else:
+            print("Error: One of the vertices does not exist.")
+            return
+        print("Enter the starting vertex: ")
+    start = int(input())
+    if start not in graph:
+        print("Error: Starting vertex does not exist.")
+        return
+    print("DFS traversal starting from vertex", start, ":")
+    dfs(graph, start)
+if __name__ == "__main__":
+    main()
