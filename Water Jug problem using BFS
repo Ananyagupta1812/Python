@@ -1,0 +1,44 @@
+from collections import deque
+def bfs(x, y, z):
+    visited = set()
+    queue = deque([(0, 0, [])]) 
+    while queue:
+        a, b, path = queue.popleft()     
+        if (a, b) in visited:
+            continue
+        visited.add((a, b))
+        path = path + [(a, b)]
+        if a == z or b == z:
+            return path
+        queue.append((x, b, path))  
+        queue.append((a, y, path))  
+        queue.append((0, b, path))  
+        queue.append((a, 0, path))  
+        if a + b <= y:
+            queue.append((0, a + b, path))
+        else:
+            queue.append((a - (y - b), y, path))
+        if a + b <= x:
+            queue.append((a + b, 0, path))
+        else:
+            queue.append((x, b - (x - a), path))
+    return None
+def main():
+    print("Enter the capacity of jug x: ")
+    x = int(input())
+    print("Enter the capacity of jug y: ")
+    y = int(input())
+    print("Enter the target amount z: ")
+    z = int(input())
+    if z > max(x, y):
+        print("No solution exists.")
+        return
+    path = bfs(x, y, z)
+    if path:
+        print("Solution path:")
+        for state in path:
+            print(state)
+    else:
+        print("No solution exists.")
+if __name__ == "__main__":
+    main()
